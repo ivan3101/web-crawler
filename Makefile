@@ -26,7 +26,13 @@ run: build
 # Run tests
 .PHONY: test
 test:
-	go test -v ./...
+	go test -v -race -buildvcs ./...
+
+# Run tests with coverage
+.PHONY: test/coverage
+test/coverage:
+	go test -v -race -buildvcs -coverprofile=/tmp/coverage.out ./...
+	go tool cover -html=/tmp/coverage.out
 
 # Clean build artifacts
 .PHONY: clean
