@@ -59,8 +59,8 @@ test:
 # Run tests with coverage
 .PHONY: test/coverage
 test/coverage:
-	go test -v -race -buildvcs -coverprofile=/tmp/coverage.out ./...
-	go tool cover -html=/tmp/coverage.out
+	go test -v -race -buildvcs -coverprofile=.coverage.out ./...
+	go tool cover -html=.coverage.out
 
 .PHONY: lint
 lint:
