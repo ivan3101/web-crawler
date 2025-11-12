@@ -7,10 +7,13 @@ BUILD_DIR=bin
 .PHONY: help
 help:
 	@echo "Available commands:"
+	@echo "  setup    - Install golangci-lint and setup pre-commit hooks"
 	@echo "  build    - Build the binary"
 	@echo "  run      - Build and run the application"
 	@echo "  test     - Run tests"
-	@echo "  setup    - Install golangci-lint and setup pre-commit hooks"
+	@echo "  test/coverage - Run tests with coverage"
+	@echo "  lint     - Run linter"
+	@echo "  lint/fix - Run linter with auto-fix"
 	@echo "  clean    - Remove build artifacts"
 
 # Setup development environment
