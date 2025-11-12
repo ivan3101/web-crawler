@@ -34,6 +34,14 @@ test/coverage:
 	go test -v -race -buildvcs -coverprofile=/tmp/coverage.out ./...
 	go tool cover -html=/tmp/coverage.out
 
+.PHONE: lint
+lint:
+	golangci-lint run
+
+.PHONE: lint/fix
+lint/fix:
+	golangci-lint run --fix
+
 # Clean build artifacts
 .PHONY: clean
 clean:
