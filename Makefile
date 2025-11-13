@@ -12,6 +12,7 @@ help:
 	@echo "  run      - Build and run the application"
 	@echo "  test     - Run tests"
 	@echo "  test/coverage - Run tests with coverage"
+	@echo "  test/coverage/ci - Run tests with coverage (CI-friendly)"
 	@echo "  lint     - Run linter"
 	@echo "  lint/fix - Run linter with auto-fix"
 	@echo "  clean    - Remove build artifacts"
@@ -61,6 +62,10 @@ test:
 test/coverage:
 	go test -v -race -buildvcs -coverprofile=.coverage.out ./...
 	go tool cover -html=.coverage.out
+# Run tests with coverage (CI-friendly, no HTML generation)
+.PHONY: test/coverage/ci
+test/coverage/ci:
+	go test -v -race -buildvcs -coverprofile=.coverage.out ./...
 
 .PHONY: lint
 lint:
