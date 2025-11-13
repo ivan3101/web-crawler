@@ -2,6 +2,7 @@
 BINARY_NAME=crawler
 MAIN_PATH=./cmd/crawler
 BUILD_DIR=bin
+TEST_COVERAGE_CMD := go test -v -race -buildvcs -coverprofile=.coverage.out ./...
 
 # Default target
 .PHONY: help
@@ -60,12 +61,13 @@ test:
 # Run tests with coverage
 .PHONY: test/coverage
 test/coverage:
-	go test -v -race -buildvcs -coverprofile=.coverage.out ./...
+	$(TEST_COVERAGE_CMD)
 	go tool cover -html=.coverage.out
+
 # Run tests with coverage (CI-friendly, no HTML generation)
 .PHONY: test/coverage/ci
 test/coverage/ci:
-	go test -v -race -buildvcs -coverprofile=.coverage.out ./...
+	$(TEST_COVERAGE_CMD)
 
 .PHONY: lint
 lint:
